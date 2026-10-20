@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dk.stemplerind.app",
+      "sha256_cert_fingerprints": [
+        "ERSTAT_MED_SHA256_FRA_PLAY_CONSOLE"
+      ]
+    }
+  }
+]

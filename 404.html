@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StemplerInd-mærke</title><link rel="icon" href="/ikon.svg"><link rel="stylesheet" href="/stil.css"></head>
+<body><main class="enkel">
+<img class="logo" src="/ikon.svg" alt="">
+<h1 id="titel">Det her er et StemplerInd-mærke</h1>
+<p id="tekst" class="daempet">Mærket stempler dig ind og ud i appen StemplerInd. Hent appen, og hold telefonen hen til mærket igen.</p>
+<a class="knap" id="hent" href="https://play.google.com/store/apps/details?id=dk.stemplerind.app">Hent StemplerInd på Google Play</a>
+<a class="knap sek" id="aabn" href="#" hidden>Åbn i StemplerInd</a>
+<p class="daempet">Har du appen? Så åbner mærket den direkte næste gang. Gør det ikke, så åbn appen og prøv igen.</p>
+<p class="daempet"><a href="/">Om StemplerInd</a> · <a href="/privatliv.html">Privatlivspolitik</a></p>
+</main>
+<script>
+// Kun til mærker: /t/... Andre adresser får en almindelig "ikke fundet".
+(function () {
+  var m = location.pathname.match(/^\/t\/(.+)$/);
+  if (!m) {
+    document.getElementById('titel').textContent = 'Siden findes ikke';
+    document.getElementById('tekst').textContent = 'Gå til forsiden for at læse om StemplerInd.';
+    return;
+  }
+  // Har man appen, men åbnede adressen i browseren, kan man hoppe direkte ind i appen
+  if (/Android/i.test(navigator.userAgent)) {
+    var a = document.getElementById('aabn');
+    a.href = 'intent://' + m[1] + location.search + '#Intent;scheme=stemplerind;package=dk.stemplerind.app;end';
+    a.hidden = false;
+  }
+})();
+</script>
+</body></html>
