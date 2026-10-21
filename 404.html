@@ -1,24 +1,41 @@
 <!doctype html>
 <html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>StemplerInd-mærke</title><link rel="icon" href="/ikon.svg"><link rel="stylesheet" href="/stil.css"></head>
+<title>StemplerInd</title><link rel="icon" href="/ikon.svg"><link rel="stylesheet" href="/stil.css"></head>
 <body><main class="enkel">
 <img class="logo" src="/ikon.svg" alt="">
-<h1 id="titel">Det her er et StemplerInd-mærke</h1>
-<p id="tekst" class="daempet">Mærket stempler dig ind og ud i appen StemplerInd. Hent appen, og hold telefonen hen til mærket igen.</p>
-<a class="knap" id="hent" href="https://play.google.com/store/apps/details?id=dk.stemplerind.app">Hent StemplerInd på Google Play</a>
-<a class="knap sek" id="aabn" href="#" hidden>Åbn i StemplerInd</a>
-<p class="daempet">Har du appen? Så åbner mærket den direkte næste gang. Gør det ikke, så åbn appen og prøv igen.</p>
-<p class="daempet"><a href="/">Om StemplerInd</a> · <a href="/privatliv.html">Privatlivspolitik</a></p>
+<h1 id="titel">StemplerInd</h1>
+<p id="tekst" class="daempet"></p>
+<a class="knap" id="hent" href="https://play.google.com/store/apps/details?id=dk.stemplerind.app"></a>
+<a class="knap sek" id="aabn" href="#" hidden></a>
+<p id="hjaelp" class="daempet"></p>
+<p class="daempet"><a id="om" href="/"></a> · <a id="privatliv" href="/privatliv.html"></a></p>
 </main>
 <script>
-// Kun til mærker: /t/... Andre adresser får en almindelig "ikke fundet".
+// Mærkesiden på browserens sprog. Kun adresser under /t/ er mærker; alt andet er "ikke fundet".
 (function () {
+  var T = {"da":{"titel":"Det her er et StemplerInd-mærke","tekst":"Mærket stempler dig ind og ud i appen StemplerInd. Hent appen, og hold telefonen hen til mærket igen.","hent":"Hent StemplerInd på Google Play","aabn":"Åbn i StemplerInd","hjaelp":"Har du appen? Så åbner mærket den direkte næste gang. Gør det ikke, så åbn appen og prøv igen.","om":"Om StemplerInd","privatliv":"Privatlivspolitik","ikkeFundet":"Siden findes ikke","ikkeFundetTekst":"Gå til forsiden for at læse om StemplerInd."},"en":{"titel":"This is a StemplerInd tag","tekst":"The tag clocks you in and out in the StemplerInd app. Get the app and hold your phone to the tag again.","hent":"Get StemplerInd on Google Play","aabn":"Open in StemplerInd","hjaelp":"Already have the app? Then the tag opens it directly next time. If not, open the app and try again.","om":"About StemplerInd","privatliv":"Privacy policy","ikkeFundet":"Page not found","ikkeFundetTekst":"Go to the front page to read about StemplerInd."},"sv":{"titel":"Det här är en StemplerInd-tagg","tekst":"Taggen stämplar in och ut dig i appen StemplerInd. Hämta appen och håll telefonen mot taggen igen.","hent":"Hämta StemplerInd på Google Play","aabn":"Öppna i StemplerInd","hjaelp":"Har du appen? Då öppnar taggen den direkt nästa gång. Annars öppnar du appen och försöker igen.","om":"Om StemplerInd","privatliv":"Integritetspolicy","ikkeFundet":"Sidan finns inte","ikkeFundetTekst":"Gå till startsidan för att läsa om StemplerInd."},"no":{"titel":"Dette er en StemplerInd-brikke","tekst":"Brikken stempler deg inn og ut i appen StemplerInd. Last ned appen og hold telefonen mot brikken igjen.","hent":"Last ned StemplerInd på Google Play","aabn":"Åpne i StemplerInd","hjaelp":"Har du appen? Da åpner brikken den direkte neste gang. Hvis ikke, åpne appen og prøv igjen.","om":"Om StemplerInd","privatliv":"Personvern","ikkeFundet":"Siden finnes ikke","ikkeFundetTekst":"Gå til forsiden for å lese om StemplerInd."},"de":{"titel":"Das ist ein StemplerInd-Tag","tekst":"Der Tag stempelt dich in der App StemplerInd ein und aus. Lade die App und halte das Telefon erneut an den Tag.","hent":"StemplerInd bei Google Play laden","aabn":"In StemplerInd öffnen","hjaelp":"Du hast die App schon? Dann öffnet der Tag sie beim nächsten Mal direkt. Falls nicht, öffne die App und versuche es erneut.","om":"Über StemplerInd","privatliv":"Datenschutz","ikkeFundet":"Seite nicht gefunden","ikkeFundetTekst":"Auf der Startseite erfährst du mehr über StemplerInd."}};
+  var STI = { da: '', en: 'en/', sv: 'sv/', no: 'no/', de: 'de/' };
+  var l = 'en';
+  var liste = navigator.languages || [navigator.language || ''];
+  for (var i = 0; i < liste.length; i++) {
+    var k = String(liste[i]).toLowerCase().slice(0, 2);
+    if (k === 'nb' || k === 'nn') k = 'no';
+    if (T[k]) { l = k; break; }
+  }
+  var t = T[l];
+  document.documentElement.lang = l === 'no' ? 'nb' : l;
+  var s = function (id, v) { document.getElementById(id).textContent = v; };
+  s('om', t.om); s('privatliv', t.privatliv);
+  document.getElementById('om').href = '/' + STI[l];
+  document.getElementById('privatliv').href = '/' + STI[l] + 'privatliv.html';
   var m = location.pathname.match(/^\/t\/(.+)$/);
   if (!m) {
-    document.getElementById('titel').textContent = 'Siden findes ikke';
-    document.getElementById('tekst').textContent = 'Gå til forsiden for at læse om StemplerInd.';
+    s('titel', t.ikkeFundet); s('tekst', t.ikkeFundetTekst);
+    document.getElementById('hent').hidden = true;
     return;
   }
+  document.title = t.titel;
+  s('titel', t.titel); s('tekst', t.tekst); s('hent', t.hent); s('hjaelp', t.hjaelp); s('aabn', t.aabn);
   // Har man appen, men åbnede adressen i browseren, kan man hoppe direkte ind i appen
   if (/Android/i.test(navigator.userAgent)) {
     var a = document.getElementById('aabn');
