@@ -5,34 +5,37 @@
 @font-face { font-family: "Instrument Sans"; font-weight: 500; font-display: swap; src: url(fonte/instrument-sans-latin-500-normal.woff2) format("woff2"); }
 @font-face { font-family: "Instrument Sans"; font-weight: 600; font-display: swap; src: url(fonte/instrument-sans-latin-600-normal.woff2) format("woff2"); }
 @font-face { font-family: "Instrument Sans"; font-weight: 700; font-display: swap; src: url(fonte/instrument-sans-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "StemplerInd Sans"; font-weight: 400; font-display: swap; src: url(fonte/stemplerind-sans-400.woff2) format("woff2"); }
+@font-face { font-family: "StemplerInd Sans"; font-weight: 700; font-display: swap; src: url(fonte/stemplerind-sans-700.woff2) format("woff2"); }
 @font-face { font-family: "JetBrains Mono"; font-weight: 400; font-display: swap; src: url(fonte/jetbrains-mono-latin-400-normal.woff2) format("woff2"); }
 @font-face { font-family: "JetBrains Mono"; font-weight: 500; font-display: swap; src: url(fonte/jetbrains-mono-latin-500-normal.woff2) format("woff2"); }
 
 :root {
-  --papir: #EEF1EF;
+  --papir: #EEF0F5;
   --flade: #FFFFFF;
-  --blaek: #14211C;
-  --daempet: #56635D;
-  --groen: #1F5C46;
+  --blaek: #141834;
+  --daempet: #565C70;
+  --groen: #151937;
   --groen-tekst: #FFFFFF;
-  --groen-lys: #DCE8E2;
-  --kant: #D5DBD8;
-  --linje: #C9D6CF;
-  --skygge: 0 1px 2px rgba(20, 33, 28, .06), 0 12px 32px -12px rgba(20, 33, 28, .18);
+  --groen-lys: #E1E6F0;
+  --fremhaev: #4A6A9E;
+  --kant: #D4D8E3;
+  --linje: #C8CEDC;
+  --skygge: 0 1px 2px rgba(20, 24, 52, .06), 0 12px 32px -12px rgba(20, 24, 52, .18);
   --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --maal: 1120px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --papir: #0F1412; --flade: #18201C; --blaek: #E9EFEC; --daempet: #9FABA5; --groen: #3E9C77; --groen-tekst: #0B1410;
-    --groen-lys: #1B2C25; --kant: #2A3530; --linje: #2F3E37; --skygge: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px -12px rgba(0, 0, 0, .6);
+    --papir: #0E1020; --flade: #181B2E; --blaek: #E9ECF3; --daempet: #A0A6B8; --groen: #90ACC5; --groen-tekst: #0B0E1C; --fremhaev: #90ACC5;
+    --groen-lys: #1E2542; --kant: #2A2F45; --linje: #2F3550; --skygge: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px -12px rgba(0, 0, 0, .6);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --papir: #0F1412; --flade: #18201C; --blaek: #E9EFEC; --daempet: #9FABA5; --groen: #3E9C77; --groen-tekst: #0B1410;
-  --groen-lys: #1B2C25; --kant: #2A3530; --linje: #2F3E37; --skygge: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px -12px rgba(0, 0, 0, .6);
+  --papir: #0E1020; --flade: #181B2E; --blaek: #E9ECF3; --daempet: #A0A6B8; --groen: #90ACC5; --groen-tekst: #0B0E1C; --fremhaev: #90ACC5;
+  --groen-lys: #1E2542; --kant: #2A2F45; --linje: #2F3550; --skygge: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px -12px rgba(0, 0, 0, .6);
   color-scheme: dark;
 }
 
@@ -66,7 +69,7 @@ section + section { border-top: 1px solid var(--kant); }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--papir); }
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--papir) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--kant); }
 .top .ramme { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
-.logo-navn { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; text-decoration: none; }
+.logo-navn { font-family: "StemplerInd Sans", var(--sans); display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: -0.02em; text-decoration: none; }
 .logo-navn img { width: 30px; height: 30px; }
 .top nav { display: flex; gap: 24px; font-size: 15px; font-weight: 500; }
 .top nav a { text-decoration: none; color: var(--daempet); }
@@ -78,7 +81,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .helt .ramme { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .helt-tekst { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
 .helt h1 { font-size: clamp(38px, 5vw, 60px); letter-spacing: -0.04em; }
-.helt h1 em { font-style: normal; color: var(--groen); }
+.helt h1 em { font-style: normal; color: var(--fremhaev); }
 .helt .lead { font-size: 20px; color: var(--daempet); max-width: 34em; }
 .helt .knapper { display: flex; flex-wrap: wrap; gap: 12px; }
 .helt .fakta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; color: var(--daempet); }
@@ -95,7 +98,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .stempelkort .sum td { border-bottom: 0; font-weight: 500; padding-top: 12px; }
 .stempelkort .sum td:first-child { font-family: var(--sans); font-weight: 700; }
 .stempelkort .norm { font-family: var(--sans); font-size: 13px; color: var(--daempet); }
-.kortbord .disk { position: absolute; width: 150px; right: max(0px, calc(50% - 250px)); bottom: 0; transform: rotate(8deg); filter: drop-shadow(0 10px 16px rgba(20, 33, 28, .3)); }
+.kortbord .disk { position: absolute; width: 150px; right: max(0px, calc(50% - 250px)); bottom: 0; transform: rotate(8deg); filter: drop-shadow(0 10px 16px rgba(20, 24, 52, .3)); }
 @media (max-width: 860px) {
   .helt .ramme { grid-template-columns: 1fr; gap: 40px; }
   .kortbord { padding-bottom: 84px; }
@@ -125,7 +128,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .projekter .regler li::before { content: "→"; color: var(--groen); font-weight: 700; }
 .diske { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; max-width: 420px; justify-self: center; width: 100%; }
 .diske.fem { grid-template-columns: repeat(5, minmax(0, 1fr)); max-width: 480px; gap: 12px; }
-.diske svg { width: 100%; height: auto; filter: drop-shadow(0 6px 10px rgba(20, 33, 28, .18)); }
+.diske svg { width: 100%; height: auto; filter: drop-shadow(0 6px 10px rgba(20, 24, 52, .18)); }
 @media (max-width: 860px) { .maerker, .projekter { grid-template-columns: 1fr; } }
 @media (max-width: 420px) { .maerke-kort { grid-template-columns: 1fr; } }
 
