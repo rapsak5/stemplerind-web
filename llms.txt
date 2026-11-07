@@ -1,0 +1,50 @@
+# StemplerInd
+
+> StemplerInd is a free Danish time tracking app for employees and freelancers. You clock in and out with one tap, an NFC tag, a shortcut or a widget. The app adds up all ins and outs per day and keeps track of target hours, balance (flextime), absence, public holidays and projects. All data stays on the device: no account, no ads, no tracking. The business sells physical NFC tags in packs.
+
+## Facts
+
+- App: free. Android app (Google Play: not published yet), web app at https://stemplerind.dk/app/ that can be installed on the home screen. iPhone app: not available yet.
+- Languages: Danish, English, Swedish, Norwegian and German.
+- Public holidays for Denmark, Sweden, Norway and Germany.
+- Absence: sick days, holidays, child's sick day, time off in lieu, parental leave and custom types.
+- Projects: coloured or symbol NFC tags move time to a project. Users name the projects themselves in the app.
+- Warnings about forgotten clock-outs, long days, weekend work and many ins and outs.
+- Approve a period and export to Excel, Word or PDF.
+- Privacy: everything is stored on the phone. The employer cannot see the data unless the user exports and shares it.
+- NFC tags: round, 30 mm, NTAG213, written and locked. They contain only a web address such as https://stemplerind.dk/t/skift and the app id dk.stemplerind.app. No personal data. The same tag works for every user.
+
+## NFC tag packs
+
+Prices in Danish kroner (DKK) including 25 % Danish VAT.
+
+- Startpakken (Starter pack): 4 tags, DKK 249. Everything you need to clock in and out and report absence.
+- Projektpakken (Project pack): 6 tags, DKK 299. Six coloured tags for projects, clients or work areas. You decide what each colour means.
+- Symbolpakken (Symbol pack): 10 tags, DKK 299. Ten black and white project tags with the numbers 1 to 5 and five symbols. Calm to look at, and no text.
+- Hele suiten (Full set): 21 tags, DKK 449. The starter pack, parental leave, the six coloured project tags and the whole symbol pack. For when you want everything covered.
+- Ind og ud-mærke (Clock in and out tag): 1 tag, DKK 75. Other tags are only sold in packs.
+- Eget design (Custom design): tags with the customer's own logo or symbols, from DKK 1,549. Ordered through the contact form.
+
+Full set costs DKK 398 less than the other three packs bought separately (DKK 847).
+
+## How the tags work
+
+- Clock in and out tag: first scan clocks in, next scan clocks out.
+- Sick tag: first scan reports sick and clocks out, next scan reports well again.
+- Holiday and parental leave tags: first scan starts, next scan ends.
+- Project tags: move the time to a project. Scanning the same tag again returns to normal time.
+
+## Pages
+
+- [Dansk](https://stemplerind.dk/): NFC-mærker til tidsregistrering. Ét mærke stempler dig ind og ud. Appen lægger tiden sammen og laver timesedlen. Pakker fra 249 kr.
+- [English](https://stemplerind.dk/en/): NFC tags for time tracking. One tag clocks you in and out. The app adds up the time and makes your timesheet. Packs from DKK 249.
+- [Svenska](https://stemplerind.dk/sv/): NFC-taggar för tidrapportering. En tagg stämplar in och ut. Appen räknar ihop tiden och gör tidrapporten. Paket från 249 DKK.
+- [Norsk](https://stemplerind.dk/no/): NFC-brikker til timeføring. Én brikke stempler deg inn og ut. Appen legger sammen tiden og lager timelisten. Pakker fra 249 DKK.
+- [Deutsch](https://stemplerind.dk/de/): NFC-Tags für die Zeiterfassung. Ein Tag stempelt dich ein und aus. Die App rechnet die Zeit zusammen und erstellt den Stundennachweis. Sets ab 249 DKK.
+- [Web app](https://stemplerind.dk/app/): use StemplerInd in the browser.
+- [Privacy policy](https://stemplerind.dk/privatliv.html)
+
+## Contact
+
+- Danish: kontakt@stemplerind.dk
+- Other languages: contact@stemplerind.dk
