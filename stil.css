@@ -230,3 +230,25 @@ main.enkel code { font-family: var(--mono); font-size: 14px; }
 .tak { margin: 0; padding: 12px 14px; border-radius: 12px; background: var(--groen-lys); font-weight: 600; }
 @media (max-width: 860px) { .kontakt { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .to-felter { grid-template-columns: 1fr; } }
+
+/* Søsterappen Plejer: egen guldfarve, så boksen tydeligt er et andet produkt */
+.soester { --guld: #C9A227; --guld-tekst: #8A6D0F; --guld-lys: #F6EFD9; position: relative; overflow: hidden; background: var(--flade); border: 1px solid var(--kant); border-radius: 24px; padding: 36px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.soester::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px; background: var(--guld); }
+.soester-tekst { display: flex; flex-direction: column; gap: 14px; }
+.soester-navn { display: inline-flex; align-items: center; gap: 12px; font-family: "StemplerInd Sans", var(--sans); font-weight: 700; font-size: 26px; text-decoration: none; letter-spacing: -0.02em; }
+.soester-navn img { border-radius: 11px; }
+.soester .etiket { color: var(--guld-tekst); }
+.soester h2 { font-size: clamp(26px, 3.6vw, 36px); }
+.soester .regler { display: grid; gap: 8px; margin: 2px 0 0; padding: 0; list-style: none; }
+.soester .regler li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; }
+.soester .regler li::before { content: "→"; color: var(--guld); font-weight: 700; }
+.soester-knap { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 6px; }
+.soester-knap .knap { background: var(--guld); color: #1E1D1A; }
+.soester-knap .lille { font-size: 14px; }
+.soester-knap .lille:empty { display: none; }
+.soester-billeder { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 12px; align-items: center; background: var(--guld-lys); border-radius: 18px; padding: 24px; }
+.soester-billeder img { filter: drop-shadow(0 10px 18px rgba(30, 29, 26, .14)); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .soester { --guld-tekst: #E2C25A; --guld-lys: #2A2516; } }
+:root[data-theme="dark"] .soester { --guld-tekst: #E2C25A; --guld-lys: #2A2516; }
+@media (max-width: 860px) { .soester { grid-template-columns: 1fr; padding: 28px 22px; gap: 26px; } }
+@media (max-width: 420px) { .soester-billeder { padding: 16px; gap: 8px; } }
