@@ -76,7 +76,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .top nav a:hover { color: var(--blaek); }
 @media (max-width: 860px) { .top nav { display: none; } }
 
-/* Toppen: budskab og stempelkort */
+/* Toppen: budskab, ark med klistermærker og telefonen */
 .helt { padding-block: 64px 80px; }
 .helt .ramme { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .helt-tekst { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
@@ -87,23 +87,38 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .helt .fakta { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; color: var(--daempet); }
 .helt .fakta span::before { content: "✓"; color: var(--groen); font-weight: 700; margin-right: 6px; }
 
-.kortbord { position: relative; min-width: 0; display: grid; place-items: center; padding: 20px 0 104px; }
-.stempelkort { width: min(100%, 380px); background: var(--flade); border: 1px solid var(--kant); border-radius: 6px; box-shadow: var(--skygge); transform: rotate(-2.5deg); padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 14px; }
-.stempelkort header { display: flex; flex-wrap: wrap; gap: 4px 12px; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--blaek); padding-bottom: 10px; }
-.stempelkort header b { font-size: 15px; letter-spacing: .14em; }
-.stempelkort table { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 15px; font-variant-numeric: tabular-nums; }
-.stempelkort th { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--daempet); text-align: left; padding: 0 0 6px; }
-.stempelkort td { padding: 8px 0; border-bottom: 1px solid var(--linje); }
-.stempelkort td:last-child, .stempelkort th:last-child { text-align: right; }
-.stempelkort .sum td { border-bottom: 0; font-weight: 500; padding-top: 12px; }
-.stempelkort .sum td:first-child { font-family: var(--sans); font-weight: 700; }
-.stempelkort .norm { font-family: var(--sans); font-size: 13px; color: var(--daempet); }
-.kortbord .disk { position: absolute; width: 150px; right: max(0px, calc(50% - 250px)); bottom: 0; transform: rotate(8deg); filter: drop-shadow(0 10px 16px rgba(20, 24, 52, .3)); }
+/* Klistermærkerne: hvidt ark med udstansede mærker. Arket er altid hvidt, også i mørkt tema, så det ligner papir. */
+.ark { --ark-kant: rgba(20, 24, 52, .13); position: relative; background: #FFFFFF; border-radius: 12px; padding: 18px 18px 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; box-shadow: 0 1px 2px rgba(20, 24, 52, .08), 0 18px 40px -16px rgba(20, 24, 52, .32); }
+.klister { position: relative; display: block; width: calc((100% - 28px) / 3); aspect-ratio: 1; border-radius: 50%; }
+.klister svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 1px 1.2px rgba(20, 24, 52, .22)); }
+.ark .klister::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--ark-kant); }
+.klister.tom { background: radial-gradient(circle at 35% 30%, #FFFFFF, #F2F3F6 70%); }
+.ark-fod { position: absolute; left: 0; right: 0; bottom: 9px; text-align: center; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: #8A90A3; }
+
+.helt-billede { position: relative; min-width: 0; width: 100%; max-width: 520px; aspect-ratio: 1 / 1.02; justify-self: center; }
+.helt-billede .ark { position: absolute; left: 0; top: 4%; width: 60%; transform: rotate(-5deg); }
+.helt-billede .loes { position: absolute; left: 36%; bottom: 1%; width: 30%; transform: rotate(-12deg); filter: drop-shadow(0 14px 18px rgba(20, 24, 52, .35)); z-index: 1; }
+.helt-billede .loes svg { filter: none; }
+.helt-billede .loes::before { content: ""; position: absolute; inset: -5%; border-radius: 50%; background: #FFFFFF; }
+.helt-billede .loes svg { position: relative; }
+.telefon { position: absolute; right: 4%; top: 12%; width: 35%; padding: 6px; border-radius: 26px; background: #0B0D1C; box-shadow: 0 30px 50px -20px rgba(20, 24, 52, .55); transform: rotate(6deg); z-index: 2; }
+.telefon img { border-radius: 20px; width: 100%; }
 @media (max-width: 860px) {
-  .helt .ramme { grid-template-columns: 1fr; gap: 40px; }
-  .kortbord { padding-bottom: 84px; }
-  .kortbord .disk { width: 104px; right: 8px; bottom: 0; }
+  .helt .ramme { grid-template-columns: 1fr; gap: 36px; }
+  .helt-billede { max-width: 440px; }
 }
+
+/* Galleriet med de fire ark */
+.ark-galleri { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px; }
+.ark-kort { display: flex; flex-direction: column; gap: 14px; text-decoration: none; }
+.ark-kort .ark { transition: transform .2s ease; }
+.ark-kort:nth-child(odd) .ark { transform: rotate(-1.5deg); }
+.ark-kort:nth-child(even) .ark { transform: rotate(1.5deg); }
+.ark-kort:hover .ark { transform: rotate(0) translateY(-3px); }
+.ark-tekst { display: flex; flex-direction: column; gap: 2px; font-size: 15px; }
+.ark-tekst b { font-size: 18px; }
+@media (max-width: 1000px) { .ark-galleri { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .ark-galleri { gap: 16px; } .ark { padding: 12px 12px 26px; gap: 10px; } .klister { width: calc((100% - 20px) / 3); } }
 
 /* Trin */
 .trin { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; counter-reset: trin; }
@@ -157,19 +172,24 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 640px) { .pakker { grid-template-columns: 1fr; max-width: 520px; } }
 
 /* Appen */
-.app { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: center; }
-.funktioner { margin: 24px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; font-size: 16px; }
+.skaerme { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-bottom: 36px; }
+.skaerme img { border-radius: 18px; border: 1px solid var(--kant); box-shadow: var(--skygge); }
+.skaerme img:nth-child(even) { transform: translateY(18px); }
+.funktioner { margin: 24px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 24px; font-size: 16px; }
 .funktioner li { border-top: 1px solid var(--kant); padding-top: 10px; }
 .funktioner b { display: block; }
-.skaerme { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.skaerme img { border-radius: 18px; border: 1px solid var(--kant); box-shadow: var(--skygge); }
-.skaerme img:nth-child(2) { transform: translateY(-24px); }
+@media (max-width: 860px) {
+  .skaerme { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding: 4px 20px 24px; margin-inline: -20px; scrollbar-width: none; }
+  .skaerme::-webkit-scrollbar { display: none; }
+  .skaerme img { flex: 0 0 62%; max-width: 260px; scroll-snap-align: center; }
+  .skaerme img:nth-child(even) { transform: none; }
+  .funktioner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .butiksmaerker { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 .butiksmaerke { display: inline-flex; flex-direction: column; padding: 10px 18px; border-radius: 12px; background: var(--blaek); color: var(--papir); text-decoration: none; line-height: 1.2; }
 .butiksmaerke small { font-size: 12px; opacity: .75; }
 .butiksmaerke b { font-size: 17px; }
 .butiksmaerke.snart { background: transparent; color: var(--daempet); border: 1px dashed var(--kant); }
-@media (max-width: 860px) { .app { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .funktioner { grid-template-columns: 1fr; } }
 
 /* Spørgsmål */
