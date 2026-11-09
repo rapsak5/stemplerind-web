@@ -409,20 +409,20 @@ button.knap { font-family: var(--sans); }
 
 /* Plejer: over tid, scan mærket, Klaret, opgaven rykker ned */
 .anim-plejer .scene { background: transparent; color: #1E1D1A; }
-.pj-telefon { animation: pj-telefon 11s cubic-bezier(.45, 0, .25, 1) infinite; transform-origin: 50% 50%; }
-.pj-s1 { animation: pj-s1 11s linear infinite; }
-.pj-s2 { opacity: 0; animation: pj-s2 11s linear infinite; }
-.pj-s3 { opacity: 0; animation: pj-s3 11s linear infinite; }
-.pj-faerdig { animation: pj-faerdig 11s ease-out infinite; }
-.pj-ring { opacity: 0; animation: pj-ring 11s ease-out infinite; }
-.pj-ring2 { animation-delay: .25s; }
-.pj-ring3 { animation-delay: .5s; }
-@keyframes pj-telefon { 0%, 12% { transform: translate(0, 0) rotate(0deg); } 28%, 40% { transform: translate(calc(-250 * var(--u)), calc(30 * var(--u))) rotate(-7deg); } 54%, 100% { transform: translate(0, 0) rotate(0deg); } }
-@keyframes pj-s1 { 0%, 30% { opacity: 1; } 33%, 95% { opacity: 0; } 99%, 100% { opacity: 1; } }
-@keyframes pj-s2 { 0%, 30% { opacity: 0; } 33%, 74% { opacity: 1; } 78%, 100% { opacity: 0; } }
-@keyframes pj-s3 { 0%, 74% { opacity: 0; } 78%, 95% { opacity: 1; } 99%, 100% { opacity: 0; } }
-@keyframes pj-faerdig { 0%, 70% { transform: scale(1); } 72% { transform: scale(.94); } 75%, 100% { transform: scale(1); } }
-@keyframes pj-ring { 0%, 29% { transform: scale(.7); opacity: 0; } 31% { transform: scale(.75); opacity: .9; } 50%, 100% { transform: scale(2.1); opacity: 0; } }
+.pj-telefon { animation: pj-telefon 8s cubic-bezier(.45, 0, .25, 1) infinite; transform-origin: 50% 50%; }
+.pj-s1 { animation: pj-s1 8s linear infinite; }
+.pj-s2 { opacity: 0; animation: pj-s2 8s linear infinite; }
+.pj-s3 { opacity: 0; animation: pj-s3 8s linear infinite; }
+.pj-faerdig { animation: pj-faerdig 8s ease-out infinite; }
+.pj-ring { opacity: 0; animation: pj-ring 8s ease-out infinite; }
+.pj-ring2 { animation-delay: .2s; }
+.pj-ring3 { animation-delay: .4s; }
+@keyframes pj-telefon { 0%, 4% { transform: translate(0, 0) rotate(0deg); } 18%, 30% { transform: translate(calc(-250 * var(--u)), calc(30 * var(--u))) rotate(-7deg); } 44%, 100% { transform: translate(0, 0) rotate(0deg); } }
+@keyframes pj-s1 { 0%, 20% { opacity: 1; } 23%, 95% { opacity: 0; } 99%, 100% { opacity: 1; } }
+@keyframes pj-s2 { 0%, 20% { opacity: 0; } 23%, 70% { opacity: 1; } 74%, 100% { opacity: 0; } }
+@keyframes pj-s3 { 0%, 70% { opacity: 0; } 74%, 95% { opacity: 1; } 99%, 100% { opacity: 0; } }
+@keyframes pj-faerdig { 0%, 65% { transform: scale(1); } 67% { transform: scale(.94); } 70%, 100% { transform: scale(1); } }
+@keyframes pj-ring { 0%, 19% { transform: scale(.7); opacity: 0; } 21% { transform: scale(.75); opacity: .9; } 40%, 100% { transform: scale(2.1); opacity: 0; } }
 
 /* Uden bevægelse: vis slutbilledet af hver scene */
 @media (prefers-reduced-motion: reduce) {
