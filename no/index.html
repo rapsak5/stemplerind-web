@@ -680,6 +680,16 @@
     a.addEventListener('click', function () { var s = document.getElementById('f-emne'); s.selectedIndex = 1; });
   });
 })();
+// Mærkerne på arkene vibrerer, hver gang arkene kommer ind på skærmen. Ikke når brugeren har slået bevægelse fra.
+(function () {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var kort = document.querySelectorAll('.ark-kort');
+  kort.forEach(function (k, i) { k.style.setProperty('--d', (i % 4) * 120 + 'ms'); });
+  var o = new IntersectionObserver(function (poster) {
+    poster.forEach(function (p) { p.target.classList.toggle('vibrer', p.isIntersecting); });
+  }, { threshold: 0.6 });
+  kort.forEach(function (k) { o.observe(k); });
+})();
 </script>
 
 <footer class="bund"><div class="ramme">

@@ -109,6 +109,19 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .ark-tekst { display: flex; flex-direction: column; gap: 2px; font-size: 15px; }
 .ark-tekst b { font-size: 18px; }
 @media (max-width: 1000px) { .ark-galleri { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Mærkerne vibrerer kort, når et ark kommer ind på skærmen, som en telefon, der lige har læst et mærke.
+   Klassen vibrer sættes af scriptet nederst i index.html.skabelon. --d forskyder arkene, nth-child mærkerne på arket. */
+.ark-kort.vibrer .klister { animation: vibrer .75s cubic-bezier(.36, .07, .19, .97) both; animation-delay: calc(var(--d, 0ms) + var(--k, 0ms)); }
+.ark .klister:nth-child(2) { --k: 50ms; } .ark .klister:nth-child(3) { --k: 100ms; } .ark .klister:nth-child(4) { --k: 150ms; } .ark .klister:nth-child(5) { --k: 200ms; } .ark .klister:nth-child(6) { --k: 250ms; }
+@keyframes vibrer {
+  0%, 100% { transform: translate(0, 0) rotate(0); }
+  12% { transform: translate(-1.5px, 0) rotate(-4deg); }
+  24% { transform: translate(1.5px, 0) rotate(4deg); }
+  36% { transform: translate(-1.5px, 0) rotate(-3deg); }
+  48% { transform: translate(1px, 0) rotate(2deg); }
+  60% { transform: translate(-.5px, 0) rotate(-1deg); }
+  72% { transform: translate(0, 0) rotate(0); }
+}
 @media (max-width: 420px) { .ark-galleri { gap: 16px; } .ark { padding: 12px 12px 26px; gap: 10px; } .klister { width: calc((100% - 20px) / 3); } }
 
 /* Trin */
