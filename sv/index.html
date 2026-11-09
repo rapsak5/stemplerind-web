@@ -547,19 +547,24 @@
   </article>
   <article class="enterprise" id="enterprise">
     <div class="indre">
-      <span class="etiket">Enterprise</span>
+      <div class="ent-logo"><img src="../ikon.svg" alt="" width="40" height="40"><span class="ent-navn">StemplerInd</span><span class="ent-maerkat">Enterprise</span></div>
       <h3>Gemensam tid för hela företaget</h3>
       <p>För företag som vill samla de anställdas tid på ett ställe. Vi bygger en version som synkroniserar mellan anställda och enheter. Skriv till oss om ni vill vara med i piloten.</p>
       <div class="pris-raekke"><span class="pris-tekst">Pris enligt överenskommelse</span><a class="knap lys" href="#kontakt" data-emne="2">Kontakta oss</a></div>
-      <p class="ent-note">Den gratis appen är oförändrad. Använder du den privat stannar dina data på din telefon.</p>
     </div>
-    <ul class="regler">
-      <li><span>De anställda loggar in med sin jobbmejl.</span></li>
-      <li><span>Tiden synkroniseras mellan telefon, webbläsare och dator. Taggarna fungerar även utan nät.</span></li>
-      <li><span>Den anställda godkänner själv sin månad. Chefen ser bara det som är godkänt och skickat.</span></li>
-      <li><span>Den godkända tidrapporten skickas som Excel och PDF till lön.</span></li>
-      <li><span>Data lagras i EU, och vi tecknar ett personuppgiftsbiträdesavtal med er.</span></li>
+    <ol class="ent-flow" aria-label="Så kommer tidrapporten till lönen">
+      <li class="ent-trin ent-trin1"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>Den anställde godkänner sin månad</span></li>
+      <li class="ent-trin ent-trin2"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>Chefen godkänner</span></li>
+      <li class="ent-trin ent-trin3"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>Excel och PDF går till lönen</span></li>
+    </ol>
+    <ul class="ent-fliser">
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><b>Jobbmejl</b><span>De anställda loggar in med sin jobbmejl.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 20v-4h-4"/></svg></span><b>Synk överallt</b><span>Tiden synkroniseras mellan telefon, webbläsare och dator. Taggarna fungerar även utan nät.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 20a7 7 0 0 1 11.5-5.4"/><path d="M15 18l2.5 2.5L22 16"/></svg></span><b>Den anställde godkänner</b><span>Den anställda godkänner själv sin månad. Chefen ser bara det som är godkänt och skickat.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><b>Excel och PDF till lönen</b><span>Den godkända tidrapporten skickas som Excel och PDF till lön.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Data i EU</b><span>Data lagras i EU, och vi tecknar ett personuppgiftsbiträdesavtal med er.</span></li>
     </ul>
+    <p class="ent-note">Den gratis appen är oförändrad. Använder du den privat stannar dina data på din telefon.</p>
   </article>
 </div></section>
 

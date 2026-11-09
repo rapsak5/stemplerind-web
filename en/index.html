@@ -547,19 +547,24 @@
   </article>
   <article class="enterprise" id="enterprise">
     <div class="indre">
-      <span class="etiket">Enterprise</span>
+      <div class="ent-logo"><img src="../ikon.svg" alt="" width="40" height="40"><span class="ent-navn">StemplerInd</span><span class="ent-maerkat">Enterprise</span></div>
       <h3>Shared time for the whole company</h3>
       <p>For companies that want their employees’ time in one place. We are building a version that syncs across employees and devices. Write to us if you want to join the pilot.</p>
       <div class="pris-raekke"><span class="pris-tekst">Price on request</span><a class="knap lys" href="#kontakt" data-emne="2">Contact us</a></div>
-      <p class="ent-note">The free app stays the same. If you use it privately, your data stays on your phone.</p>
     </div>
-    <ul class="regler">
-      <li><span>Employees sign in with their work email.</span></li>
-      <li><span>Time syncs between phone, browser and computer. The tags also work offline.</span></li>
-      <li><span>Each employee approves their own month. The manager only sees what has been approved and sent.</span></li>
-      <li><span>The approved timesheet is sent as Excel and PDF to payroll.</span></li>
-      <li><span>Data is stored in the EU, and we sign a data processing agreement with you.</span></li>
+    <ol class="ent-flow" aria-label="How the timesheet reaches payroll">
+      <li class="ent-trin ent-trin1"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>The employee approves the month</span></li>
+      <li class="ent-trin ent-trin2"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>The manager approves</span></li>
+      <li class="ent-trin ent-trin3"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>Excel and PDF go to payroll</span></li>
+    </ol>
+    <ul class="ent-fliser">
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><b>Work email</b><span>Employees sign in with their work email.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 20v-4h-4"/></svg></span><b>Sync everywhere</b><span>Time syncs between phone, browser and computer. The tags also work offline.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 20a7 7 0 0 1 11.5-5.4"/><path d="M15 18l2.5 2.5L22 16"/></svg></span><b>The employee approves</b><span>Each employee approves their own month. The manager only sees what has been approved and sent.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><b>Excel and PDF to payroll</b><span>The approved timesheet is sent as Excel and PDF to payroll.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Data in the EU</b><span>Data is stored in the EU, and we sign a data processing agreement with you.</span></li>
     </ul>
+    <p class="ent-note">The free app stays the same. If you use it privately, your data stays on your phone.</p>
   </article>
 </div></section>
 

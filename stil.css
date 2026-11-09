@@ -262,19 +262,53 @@ main.enkel code { font-family: var(--mono); font-size: 14px; }
 .eget .pris small { font-family: var(--sans); font-size: 13px; color: var(--daempet); margin-left: 4px; }
 @media (max-width: 700px) { .eget { grid-template-columns: 1fr; } .eget img { max-height: 320px; } }
 /* Enterprise: mørkeblå boks under Eget design. Tekst og knap til venstre, hvad udgaven kan til højre */
-.enterprise { margin-top: 22px; background: var(--groen); color: var(--groen-tekst); border-radius: 22px; padding: 30px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; align-items: center; }
-.enterprise .indre { display: flex; flex-direction: column; gap: 12px; }
-.enterprise .etiket { color: #90ACC5; }
-.enterprise h3 { font-size: 26px; }
+.enterprise { margin-top: 22px; background: var(--groen); color: var(--groen-tekst); border-radius: 22px; padding: 32px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 44px; align-items: center; position: relative; overflow: hidden; }
+.enterprise::before { content: ""; position: absolute; right: -120px; top: -120px; width: 360px; height: 360px; border-radius: 50%; border: 1px solid rgba(144, 172, 197, .18); box-shadow: 0 0 0 60px rgba(144, 172, 197, .04), 0 0 0 120px rgba(144, 172, 197, .03); pointer-events: none; }
+.enterprise .indre { display: flex; flex-direction: column; gap: 14px; position: relative; }
+.ent-logo { display: flex; align-items: center; gap: 10px; }
+.ent-logo img { width: 40px; height: 40px; border-radius: 10px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .22); }
+.ent-navn { font-family: "StemplerInd Sans", var(--sans); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; }
+.ent-maerkat { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--groen); background: #90ACC5; border-radius: 999px; padding: 4px 10px; }
+.enterprise h3 { font-size: 28px; }
 .enterprise p { color: #D6DEEA; }
 .enterprise .pris-raekke { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 4px; }
 .enterprise .pris-tekst { font-size: 17px; font-weight: 600; }
 .enterprise .knap.lys { background: #FFFFFF; color: var(--groen); }
-.enterprise .ent-note { font-size: 14px; color: #B5C3D6; }
-.enterprise .regler { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.enterprise .regler li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; }
-.enterprise .regler li::before { content: "→"; color: #90ACC5; font-weight: 700; }
-@media (max-width: 700px) { .enterprise { grid-template-columns: 1fr; padding: 24px 20px; } }
+
+/* Flowet: medarbejder, leder, løn. Fluebenene kommer ét ad gangen, og stregen imellem fyldes. */
+.ent-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); position: relative; }
+.ent-trin { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; font-size: 15px; line-height: 1.35; font-weight: 600; padding: 0 6px; }
+.ent-trin + .ent-trin::before { content: ""; position: absolute; top: 38px; right: calc(50% + 46px); width: calc(100% - 92px); height: 2px; background: rgba(144, 172, 197, .3); }
+.ent-trin + .ent-trin::after { content: ""; position: absolute; top: 38px; right: calc(50% + 46px); width: calc(100% - 92px); height: 2px; background: #90ACC5; transform-origin: left; animation: ent-streg 6s ease-in-out infinite both; }
+.ent-trin.ent-trin3::after { animation-delay: 1.4s; }
+.ent-node { position: relative; width: 78px; height: 78px; border-radius: 50%; background: rgba(255, 255, 255, .08); border: 1px solid rgba(144, 172, 197, .35); display: grid; place-items: center; color: #FFFFFF; }
+.ent-node svg { width: 32px; height: 32px; }
+.ent-ok { position: absolute; right: -4px; bottom: -4px; width: 28px; height: 28px; border-radius: 50%; background: #2E9E5B; color: #FFFFFF; display: grid; place-items: center; box-shadow: 0 0 0 3px var(--groen); animation: ent-ok 6s ease-out infinite both; }
+.ent-ok svg { width: 16px; height: 16px; }
+.ent-trin2 .ent-ok { animation-delay: .7s; }
+.ent-trin3 .ent-ok { animation-delay: 2.1s; }
+@keyframes ent-ok { 0%, 8% { transform: scale(0); opacity: 0; } 14% { transform: scale(1.15); opacity: 1; } 18%, 82% { transform: scale(1); opacity: 1; } 90%, 100% { transform: scale(0); opacity: 0; } }
+@keyframes ent-streg { 0%, 10% { transform: scaleX(0); } 22%, 82% { transform: scaleX(1); } 90%, 100% { transform: scaleX(0); } }
+
+/* Fliserne under: det, virksomheden får */
+.ent-fliser { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.ent-fliser li { background: rgba(255, 255, 255, .06); border: 1px solid rgba(144, 172, 197, .2); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4; color: #D6DEEA; }
+.ent-fliser b { color: #FFFFFF; font-size: 15px; }
+.ent-ikon { width: 38px; height: 38px; border-radius: 12px; background: rgba(144, 172, 197, .16); color: #90ACC5; display: grid; place-items: center; margin-bottom: 4px; }
+.ent-ikon svg { width: 20px; height: 20px; }
+.enterprise .ent-note { grid-column: 1 / -1; font-size: 14px; color: #B5C3D6; margin: 0; }
+@media (max-width: 1000px) { .ent-fliser { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ent-fliser li:last-child { grid-column: 1 / -1; } }
+@media (max-width: 860px) { .enterprise { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .enterprise { padding: 24px 20px; }
+  .ent-node { width: 64px; height: 64px; } .ent-node svg { width: 26px; height: 26px; }
+  .ent-trin { font-size: 13px; }
+  .ent-trin + .ent-trin::before, .ent-trin + .ent-trin::after { top: 31px; right: calc(50% + 38px); width: calc(100% - 76px); }
+  .ent-fliser { grid-template-columns: 1fr; gap: 8px; }
+  .ent-fliser li { display: grid; grid-template-columns: 38px minmax(0, 1fr); grid-template-areas: "ikon titel" "ikon tekst"; gap: 2px 12px; padding: 12px 14px; }
+  .ent-fliser li:last-child { grid-column: auto; }
+  .ent-ikon { grid-area: ikon; margin: 0; align-self: center; } .ent-fliser b { grid-area: titel; } .ent-fliser li > span:last-child { grid-area: tekst; }
+}
 
 /* Kontaktformular */
 .kontakt { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 36px; align-items: start; }
@@ -460,4 +494,7 @@ button.knap { font-family: var(--sans); }
   .ad-s1, .at-s1, .ap-s0, .pj-s1 { opacity: 0; }
   .ad-s2, .ad-besked1, .at-s2, .ap-s4, .pj-s2 { opacity: 1; }
   .at-bue { stroke-dashoffset: 150; }
+  /* Pseudo-elementer fanges ikke af * { animation: none } øverst */
+  .ent-trin::after, .puls-prik::after { animation: none !important; }
+  .puls-prik::after { opacity: 0; }
 }

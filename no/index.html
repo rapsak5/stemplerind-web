@@ -547,19 +547,24 @@
   </article>
   <article class="enterprise" id="enterprise">
     <div class="indre">
-      <span class="etiket">Enterprise</span>
+      <div class="ent-logo"><img src="../ikon.svg" alt="" width="40" height="40"><span class="ent-navn">StemplerInd</span><span class="ent-maerkat">Enterprise</span></div>
       <h3>Felles tid for hele bedriften</h3>
       <p>For bedrifter som vil samle de ansattes tid på ett sted. Vi bygger en versjon som synkroniserer mellom ansatte og enheter. Skriv til oss hvis dere vil være med i piloten.</p>
       <div class="pris-raekke"><span class="pris-tekst">Pris etter avtale</span><a class="knap lys" href="#kontakt" data-emne="2">Kontakt oss</a></div>
-      <p class="ent-note">Den gratis appen er uendret. Bruker du den privat, blir dataene dine bare på telefonen din.</p>
     </div>
-    <ul class="regler">
-      <li><span>De ansatte logger inn med jobbeposten sin.</span></li>
-      <li><span>Tiden synkroniseres mellom telefon, nettleser og datamaskin. Brikkene virker også uten nett.</span></li>
-      <li><span>Den ansatte godkjenner selv måneden sin. Lederen ser bare det som er godkjent og sendt.</span></li>
-      <li><span>Den godkjente timelisten sendes som Excel og PDF til lønn.</span></li>
-      <li><span>Data lagres i EU, og vi inngår en databehandleravtale med dere.</span></li>
+    <ol class="ent-flow" aria-label="Slik kommer timelisten til lønn">
+      <li class="ent-trin ent-trin1"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>Den ansatte godkjenner måneden sin</span></li>
+      <li class="ent-trin ent-trin2"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>Lederen godkjenner</span></li>
+      <li class="ent-trin ent-trin3"><span class="ent-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg><span class="ent-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></span><span>Excel og PDF går til lønn</span></li>
+    </ol>
+    <ul class="ent-fliser">
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><b>Jobbe-e-post</b><span>De ansatte logger inn med jobbeposten sin.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 20v-4h-4"/></svg></span><b>Synk overalt</b><span>Tiden synkroniseres mellom telefon, nettleser og datamaskin. Brikkene virker også uten nett.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 20a7 7 0 0 1 11.5-5.4"/><path d="M15 18l2.5 2.5L22 16"/></svg></span><b>Den ansatte godkjenner</b><span>Den ansatte godkjenner selv måneden sin. Lederen ser bare det som er godkjent og sendt.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><b>Excel og PDF til lønn</b><span>Den godkjente timelisten sendes som Excel og PDF til lønn.</span></li>
+    <li><span class="ent-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><b>Data i EU</b><span>Data lagres i EU, og vi inngår en databehandleravtale med dere.</span></li>
     </ul>
+    <p class="ent-note">Den gratis appen er uendret. Bruker du den privat, blir dataene dine bare på telefonen din.</p>
   </article>
 </div></section>
 
