@@ -263,10 +263,8 @@ main.enkel code { font-family: var(--mono); font-size: 14px; }
 .soester-knap .knap { background: var(--guld); color: #1E1D1A; }
 .soester-knap .lille { font-size: 14px; }
 .soester-knap .lille:empty { display: none; }
-.soester-billeder { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 12px; align-items: center; background: var(--guld-lys); border-radius: 18px; padding: 24px; }
-.soester-billeder img { filter: drop-shadow(0 10px 18px rgba(30, 29, 26, .14)); }
+.soester-billeder { display: grid; background: var(--guld-lys); border-radius: 18px; padding: 12px; }
 @media (max-width: 860px) { .soester { grid-template-columns: 1fr; padding: 28px 22px; gap: 26px; } }
-@media (max-width: 420px) { .soester-billeder { padding: 16px; gap: 8px; } }
 
 /* Kurven: knap nederst til højre og et panel, der kommer op nedefra på telefonen */
 .tekstknap { background: none; border: 0; padding: 0 2px; font: inherit; font-weight: 600; color: var(--blaek); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
@@ -396,9 +394,26 @@ button.knap { font-family: var(--sans); }
 @keyframes ap-ring2 { 0%, 27% { transform: scale(.7); opacity: 0; } 29% { transform: scale(.8); opacity: .8; } 40%, 100% { transform: scale(2.2); opacity: 0; } }
 @keyframes ap-ring3 { 0%, 45% { transform: scale(.7); opacity: 0; } 47% { transform: scale(.8); opacity: .8; } 58%, 100% { transform: scale(2.2); opacity: 0; } }
 
+/* Plejer: over tid, scan mærket, Klaret, opgaven rykker ned */
+.anim-plejer .scene { background: transparent; color: #1E1D1A; }
+.pj-telefon { animation: pj-telefon 11s cubic-bezier(.45, 0, .25, 1) infinite; transform-origin: 50% 50%; }
+.pj-s1 { animation: pj-s1 11s linear infinite; }
+.pj-s2 { opacity: 0; animation: pj-s2 11s linear infinite; }
+.pj-s3 { opacity: 0; animation: pj-s3 11s linear infinite; }
+.pj-faerdig { animation: pj-faerdig 11s ease-out infinite; }
+.pj-ring { opacity: 0; animation: pj-ring 11s ease-out infinite; }
+.pj-ring2 { animation-delay: .25s; }
+.pj-ring3 { animation-delay: .5s; }
+@keyframes pj-telefon { 0%, 12% { transform: translate(0, 0) rotate(0deg); } 28%, 40% { transform: translate(calc(-250 * var(--u)), calc(30 * var(--u))) rotate(-7deg); } 54%, 100% { transform: translate(0, 0) rotate(0deg); } }
+@keyframes pj-s1 { 0%, 30% { opacity: 1; } 33%, 95% { opacity: 0; } 99%, 100% { opacity: 1; } }
+@keyframes pj-s2 { 0%, 30% { opacity: 0; } 33%, 74% { opacity: 1; } 78%, 100% { opacity: 0; } }
+@keyframes pj-s3 { 0%, 74% { opacity: 0; } 78%, 95% { opacity: 1; } 99%, 100% { opacity: 0; } }
+@keyframes pj-faerdig { 0%, 70% { transform: scale(1); } 72% { transform: scale(.94); } 75%, 100% { transform: scale(1); } }
+@keyframes pj-ring { 0%, 29% { transform: scale(.7); opacity: 0; } 31% { transform: scale(.75); opacity: .9; } 50%, 100% { transform: scale(2.1); opacity: 0; } }
+
 /* Uden bevægelse: vis slutbilledet af hver scene */
 @media (prefers-reduced-motion: reduce) {
-  .ad-s1, .at-s1, .ap-s0 { opacity: 0; }
-  .ad-s2, .ad-besked1, .at-s2, .ap-s4 { opacity: 1; }
+  .ad-s1, .at-s1, .ap-s0, .pj-s1 { opacity: 0; }
+  .ad-s2, .ad-besked1, .at-s2, .ap-s4, .pj-s2 { opacity: 1; }
   .at-bue { stroke-dashoffset: 150; }
 }
