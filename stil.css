@@ -530,3 +530,8 @@ button.knap { font-family: var(--sans); }
   .ent-trin::after, .puls-prik::after { animation: none !important; }
   .puls-prik::after { opacity: 0; }
 }
+.fortryd-resume { margin: 0; }
+.fortryd-resume dt { font-size: 14px; font-weight: 600; }
+.fortryd-resume dd { margin: 2px 0 12px; overflow-wrap: anywhere; white-space: pre-line; }
+.formular-skabelon { background: var(--flade); border: 1px solid var(--kant); border-radius: 16px; padding: 18px 20px; line-height: 2; }
+.kurv-vilkaar { font-size: 14px; text-align: center; margin: 6px 0 0; }

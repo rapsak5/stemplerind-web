@@ -21,11 +21,12 @@
   var knapTal = el('span', 'kurv-tal'); knap.appendChild(el('span', 'kurv-knap-navn', t.kurv)); knap.appendChild(knapTal);
   var panel = el('dialog', 'kurv-panel'); panel.setAttribute('aria-label', t.kurvTitel);
   panel.innerHTML = '<div class="kurv-hoved"><h2></h2><button type="button" class="kurv-luk"></button></div><ul class="kurv-linjer"></ul><p class="kurv-tom daempet"></p>'
-    + '<dl class="kurv-sum"></dl><p class="kurv-fejl" role="alert" hidden></p><button type="button" class="knap kurv-betal"></button><p class="kurv-stripe daempet"></p>';
+    + '<dl class="kurv-sum"></dl><p class="kurv-fejl" role="alert" hidden></p><button type="button" class="knap kurv-betal"></button><p class="kurv-stripe daempet"></p><p class="kurv-vilkaar"><a href="betingelser.html"></a></p>';
   panel.querySelector('h2').textContent = t.kurvTitel;
   var luk = panel.querySelector('.kurv-luk'); luk.textContent = '×'; luk.setAttribute('aria-label', t.kurvLuk);
   panel.querySelector('.kurv-tom').textContent = t.kurvTom;
   panel.querySelector('.kurv-stripe').textContent = t.kurvStripe;
+  panel.querySelector('.kurv-vilkaar a').textContent = t.kurvVilkaar || '';
   var betal = panel.querySelector('.kurv-betal'), fejl = panel.querySelector('.kurv-fejl');
   document.body.appendChild(knap); document.body.appendChild(panel);
 
