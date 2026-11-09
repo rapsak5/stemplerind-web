@@ -141,6 +141,20 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .trin li::before { content: counter(trin); font-family: var(--mono); font-weight: 500; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--groen-lys); color: var(--groen); }
 .trin h3 { font-size: 21px; }
 .trin ol { margin: 0; padding: 0; }
+/* Grafikken nederst i hvert trin: mærket og det, appen viser bagefter */
+.trin-vis { margin-top: auto; padding-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.trin-maerke { position: relative; width: 44px; height: 44px; flex-shrink: 0; }
+.trin-maerke svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 1px 2px rgba(20, 24, 52, .25)); }
+.trin-ping { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--fremhaev); opacity: 0; animation: trin-ping 2.4s ease-out infinite; }
+.trin-ping2 { animation-delay: .3s; }
+li:nth-child(3) .trin-ping { animation-delay: 1.2s; } li:nth-child(3) .trin-ping2 { animation-delay: 1.5s; }
+@keyframes trin-ping { 0% { transform: scale(.9); opacity: .8; } 60%, 100% { transform: scale(1.9); opacity: 0; } }
+.trin-pil { color: var(--daempet); flex-shrink: 0; }
+.trin-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; padding: 4px 14px 4px 5px; border-radius: 999px; background: var(--flade); border: 1px solid var(--kant); font-size: 14px; font-weight: 600; white-space: nowrap; }
+.trin-chip .mono { font-family: var(--mono); font-weight: 500; color: var(--daempet); }
+.trin-chip-lys { background: var(--groen-lys); border-color: transparent; padding-left: 14px; }
+.trin-ok { width: 24px; height: 24px; border-radius: 50%; background: var(--groen); color: #FFFFFF; display: grid; place-items: center; flex-shrink: 0; }
+.trin-sum { font-family: var(--mono); font-size: 13px; color: var(--daempet); }
 @media (max-width: 760px) { .trin { grid-template-columns: 1fr; } }
 
 /* Mærkerne */
