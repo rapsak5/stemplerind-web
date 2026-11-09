@@ -113,6 +113,17 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
    Klassen vibrer sættes af scriptet nederst i index.html.skabelon. --d forskyder arkene, nth-child mærkerne på arket. */
 .ark-kort.vibrer .klister { animation: vibrer .75s cubic-bezier(.36, .07, .19, .97) both; animation-delay: calc(var(--d, 0ms) + var(--k, 0ms)); }
 .ark .klister:nth-child(2) { --k: 50ms; } .ark .klister:nth-child(3) { --k: 100ms; } .ark .klister:nth-child(4) { --k: 150ms; } .ark .klister:nth-child(5) { --k: 200ms; } .ark .klister:nth-child(6) { --k: 250ms; }
+/* Pakkernes billeder vibrerer på samme måde, men mindre. Billedet er lidt forstørret, så hjørnerne ikke kommer til syne, når det drejer. */
+.pakke.vibrer img, .eget.vibrer img { animation: vibrer-billede .75s cubic-bezier(.36, .07, .19, .97) both; animation-delay: var(--d, 0ms); }
+@keyframes vibrer-billede {
+  0%, 100% { transform: scale(1) rotate(0); }
+  10% { transform: scale(1.05) rotate(-1.6deg); }
+  22% { transform: scale(1.05) translateX(-1.5px) rotate(1.6deg); }
+  34% { transform: scale(1.05) translateX(1.5px) rotate(-1.2deg); }
+  46% { transform: scale(1.05) rotate(.8deg); }
+  58% { transform: scale(1.04) rotate(-.4deg); }
+  76% { transform: scale(1) rotate(0); }
+}
 @keyframes vibrer {
   0%, 100% { transform: translate(0, 0) rotate(0); }
   12% { transform: translate(-1.5px, 0) rotate(-4deg); }
@@ -165,6 +176,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .pakke { position: relative; background: var(--flade); border: 1px solid var(--kant); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
 .pakke.fremhaevet { border: 2px solid var(--groen); }
 .pakke img { aspect-ratio: 1; width: 100%; object-fit: cover; }
+/* Rammen klipper billedet, så det kan vibrere uden at dække teksten */
+.pakke-billede { display: block; overflow: hidden; }
 .pakke .indre { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .pakke h3 { font-size: 24px; }
 .pakke ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 15px; }
@@ -178,7 +191,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 /* Hele suiten fylder to kolonner med billedet ved siden af teksten */
 @media (min-width: 641px) {
   .pakke.fremhaevet { grid-column: span 2; flex-direction: row; }
-  .pakke.fremhaevet picture { width: 50%; flex-shrink: 0; display: flex; }
+  .pakke.fremhaevet .pakke-billede { width: 50%; flex-shrink: 0; display: flex; }
+  .pakke.fremhaevet picture { width: 100%; display: flex; }
   .pakke.fremhaevet img { aspect-ratio: auto; height: 100%; }
 }
 @media (max-width: 1100px) { .pakker { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 860px; } }
