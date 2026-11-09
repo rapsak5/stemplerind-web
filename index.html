@@ -554,6 +554,22 @@
       <div class="pris-raekke"><span class="pris">Fra 1.549<small>kr.</small></span><a class="knap" href="#kontakt" data-emne="1">Kontakt os</a></div>
     </div>
   </article>
+  <article class="enterprise" id="enterprise">
+    <div class="indre">
+      <span class="etiket">Enterprise</span>
+      <h3>Fælles tid for hele virksomheden</h3>
+      <p>Til virksomheder, der vil samle medarbejdernes tid ét sted. Vi er ved at bygge en udgave med synkronisering på tværs af medarbejdere og enheder. Skriv til os, hvis I vil være med i piloten.</p>
+      <div class="pris-raekke"><span class="pris-tekst">Pris efter aftale</span><a class="knap lys" href="#kontakt" data-emne="2">Kontakt os</a></div>
+      <p class="ent-note">Den gratis app er uændret. Bruger du den privat, bliver dine data kun på din telefon.</p>
+    </div>
+    <ul class="regler">
+      <li><span>Medarbejderne logger ind med deres arbejdsmail.</span></li>
+      <li><span>Tiden synkroniseres mellem telefon, browser og computer. Mærkerne virker også uden net.</span></li>
+      <li><span>Medarbejderen godkender selv sin måned. Lederen ser kun det, der er godkendt og sendt.</span></li>
+      <li><span>Den godkendte timeseddel sendes som Excel og PDF til løn.</span></li>
+      <li><span>Data ligger i EU, og vi laver en databehandleraftale med jer.</span></li>
+    </ul>
+  </article>
 </div></section>
 
 <section id="plejer" class="soester-sektion"><div class="ramme">
@@ -664,7 +680,7 @@
     </div>
     <div class="to-felter">
       <label for="f-firma">Firma (valgfrit)<input id="f-firma" name="firma" autocomplete="organization"></label>
-      <label for="f-emne">Emne<select id="f-emne" name="emne"><option>Spørgsmål</option><option>Eget design</option><option>Bestilling</option><option>Andet</option></select></label>
+      <label for="f-emne">Emne<select id="f-emne" name="emne"><option>Spørgsmål</option><option>Eget design</option><option>Enterprise</option><option>Bestilling</option><option>Andet</option></select></label>
     </div>
     <label for="f-besked">Besked<textarea id="f-besked" name="besked" rows="5" required></textarea></label>
     <div class="send-raekke"><button class="knap" type="submit">Send besked</button><span class="daempet lille">Beskeden sendes til vores mail gennem tjenesten FormSubmit. <a href="privatliv.html">Privatlivspolitik</a></span></div>
@@ -673,11 +689,11 @@
 </div></section>
 </main>
 <script>
-// Tak efter afsendelse, og knappen ved Eget design vælger emnet i formularen
+// Tak efter afsendelse, og knapperne ved Eget design og Enterprise vælger emnet i formularen
 (function () {
   if (/[?&]tak=1/.test(location.search)) { document.getElementById('tak').hidden = false; }
   document.querySelectorAll('[data-emne]').forEach(function (a) {
-    a.addEventListener('click', function () { var s = document.getElementById('f-emne'); s.selectedIndex = 1; });
+    a.addEventListener('click', function () { var s = document.getElementById('f-emne'); s.selectedIndex = +a.getAttribute('data-emne'); });
   });
 })();
 // Mærkerne på arkene vibrerer, hver gang arkene kommer ind på skærmen. Ikke når brugeren har slået bevægelse fra.

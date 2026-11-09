@@ -244,6 +244,20 @@ main.enkel code { font-family: var(--mono); font-size: 14px; }
 .eget .pris { font-family: var(--mono); font-size: 26px; font-weight: 500; }
 .eget .pris small { font-family: var(--sans); font-size: 13px; color: var(--daempet); margin-left: 4px; }
 @media (max-width: 700px) { .eget { grid-template-columns: 1fr; } .eget img { max-height: 320px; } }
+/* Enterprise: mørkeblå boks under Eget design. Tekst og knap til venstre, hvad udgaven kan til højre */
+.enterprise { margin-top: 22px; background: var(--groen); color: var(--groen-tekst); border-radius: 22px; padding: 30px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; align-items: center; }
+.enterprise .indre { display: flex; flex-direction: column; gap: 12px; }
+.enterprise .etiket { color: #90ACC5; }
+.enterprise h3 { font-size: 26px; }
+.enterprise p { color: #D6DEEA; }
+.enterprise .pris-raekke { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 4px; }
+.enterprise .pris-tekst { font-size: 17px; font-weight: 600; }
+.enterprise .knap.lys { background: #FFFFFF; color: var(--groen); }
+.enterprise .ent-note { font-size: 14px; color: #B5C3D6; }
+.enterprise .regler { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.enterprise .regler li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; }
+.enterprise .regler li::before { content: "→"; color: #90ACC5; font-weight: 700; }
+@media (max-width: 700px) { .enterprise { grid-template-columns: 1fr; padding: 24px 20px; } }
 
 /* Kontaktformular */
 .kontakt { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 36px; align-items: start; }
