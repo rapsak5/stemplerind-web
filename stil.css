@@ -133,11 +133,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 760px) { .trin { grid-template-columns: 1fr; } }
 
 /* Mærkerne */
-.maerker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.maerke-kort { background: var(--flade); border: 1px solid var(--kant); border-radius: 20px; padding: 24px; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: start; }
-.maerke-kort svg { width: 96px; height: 96px; }
-.maerke-kort h3 { font-size: 22px; margin-bottom: 12px; }
-.scanning { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 12px; font-size: 16px; }
+.maerker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.maerke-kort { background: var(--flade); border: 1px solid var(--kant); border-radius: 18px; padding: 16px 18px; display: grid; grid-template-columns: 64px minmax(0, 1fr); grid-template-areas: "ikon titel" "ikon liste"; gap: 6px 16px; align-items: center; }
+.maerke-kort > div { display: contents; }
+.maerke-kort svg { grid-area: ikon; }
+.maerke-kort h3 { grid-area: titel; align-self: end; }
+.maerke-kort .scanning { grid-area: liste; align-self: start; margin: 0; }
+.maerke-kort svg { width: 64px; height: 64px; }
+.maerke-kort h3 { font-size: 19px; }
+.scanning { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; font-size: 15px; line-height: 1.4; }
 .scanning dt { font-family: var(--mono); font-size: 13px; color: var(--daempet); padding-top: 2px; white-space: nowrap; }
 .scanning dd { margin: 0; }
 .projekter { margin-top: 20px; background: var(--flade); border: 1px solid var(--kant); border-radius: 20px; padding: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; }
@@ -149,7 +153,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .diske.seks { grid-template-columns: repeat(6, minmax(0, 1fr)); max-width: 520px; gap: 12px; }
 .diske svg { width: 100%; height: auto; filter: drop-shadow(0 6px 10px rgba(20, 24, 52, .18)); }
 @media (max-width: 860px) { .maerker, .projekter { grid-template-columns: 1fr; } }
-@media (max-width: 420px) { .maerke-kort { grid-template-columns: 1fr; } }
+@media (max-width: 520px) {
+  .maerke-kort { grid-template-columns: 44px minmax(0, 1fr); grid-template-areas: "ikon titel" "liste liste"; gap: 10px 12px; padding: 14px 16px; }
+  .maerke-kort svg { width: 44px; height: 44px; }
+  .maerke-kort h3 { font-size: 18px; align-self: center; }
+  .scanning { font-size: 15px; }
+}
 
 /* Pakker */
 .pakker { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
@@ -179,13 +188,21 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .skaerme { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-bottom: 36px; }
 .skaerme img { border-radius: 18px; border: 1px solid var(--kant); box-shadow: var(--skygge); }
 .skaerme img:nth-child(even) { transform: translateY(18px); }
+/* Første skærmbillede: prikken i stempelknappen pulserer, så man kan se, at tiden tæller. Prikken sidder 49,9 % inde og 32,7 % nede i billedet. */
+.skaerm-ramme { position: relative; display: block; min-width: 0; align-self: start; }
+.skaerm-ramme img { width: 100%; }
+.puls-prik { position: absolute; left: 49.9%; top: 32.7%; width: 2.8%; aspect-ratio: 1; border-radius: 50%; background: #3176D1; transform: translate(-50%, -50%); animation: puls-prik 1.6s ease-in-out infinite; }
+.puls-prik::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #5B93E8; animation: puls-ring 1.6s ease-out infinite; }
+@keyframes puls-prik { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.25); } }
+@keyframes puls-ring { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(3.4); opacity: 0; } }
 .funktioner { margin: 24px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 24px; font-size: 16px; }
 .funktioner li { border-top: 1px solid var(--kant); padding-top: 10px; }
 .funktioner b { display: block; }
 @media (max-width: 860px) {
   .skaerme { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; padding: 4px 20px 24px; margin-inline: -20px; scrollbar-width: none; }
   .skaerme::-webkit-scrollbar { display: none; }
-  .skaerme img { flex: 0 0 62%; max-width: 260px; scroll-snap-align: center; }
+  .skaerme img, .skaerme .skaerm-ramme { flex: 0 0 62%; max-width: 260px; scroll-snap-align: center; }
+  .skaerme .skaerm-ramme img { max-width: none; }
   .skaerme img:nth-child(even) { transform: none; }
   .funktioner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
