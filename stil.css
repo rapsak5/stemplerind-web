@@ -307,16 +307,20 @@ main.enkel code { font-family: var(--mono); font-size: 14px; }
 .ent-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); position: relative; }
 .ent-trin { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; font-size: 15px; line-height: 1.35; font-weight: 600; padding: 0 6px; }
 .ent-trin + .ent-trin::before { content: ""; position: absolute; top: 38px; right: calc(50% + 46px); width: calc(100% - 92px); height: 2px; background: rgba(144, 172, 197, .3); }
-.ent-trin + .ent-trin::after { content: ""; position: absolute; top: 38px; right: calc(50% + 46px); width: calc(100% - 92px); height: 2px; background: #90ACC5; transform-origin: left; animation: ent-streg 6s ease-in-out infinite both; }
-.ent-trin.ent-trin3::after { animation-delay: 1.4s; }
+.ent-trin + .ent-trin::after { content: ""; position: absolute; top: 38px; right: calc(50% + 46px); width: calc(100% - 92px); height: 2px; background: #90ACC5; transform-origin: left; animation: ent-streg1 7s ease-in-out infinite both; }
+.ent-trin.ent-trin3::after { animation-name: ent-streg2; }
 .ent-node { position: relative; width: 78px; height: 78px; border-radius: 50%; background: rgba(255, 255, 255, .08); border: 1px solid rgba(144, 172, 197, .35); display: grid; place-items: center; color: #FFFFFF; }
 .ent-node svg { width: 32px; height: 32px; }
-.ent-ok { position: absolute; right: -4px; bottom: -4px; width: 28px; height: 28px; border-radius: 50%; background: #2E9E5B; color: #FFFFFF; display: grid; place-items: center; box-shadow: 0 0 0 3px var(--groen); animation: ent-ok 6s ease-out infinite both; }
+.ent-ok { position: absolute; right: -4px; bottom: -4px; width: 28px; height: 28px; border-radius: 50%; background: #2E9E5B; color: #FFFFFF; display: grid; place-items: center; box-shadow: 0 0 0 3px var(--groen); animation: ent-ok1 7s ease-out infinite both; }
 .ent-ok svg { width: 16px; height: 16px; }
-.ent-trin2 .ent-ok { animation-delay: .7s; }
-.ent-trin3 .ent-ok { animation-delay: 2.1s; }
-@keyframes ent-ok { 0%, 8% { transform: scale(0); opacity: 0; } 14% { transform: scale(1.15); opacity: 1; } 18%, 82% { transform: scale(1); opacity: 1; } 90%, 100% { transform: scale(0); opacity: 0; } }
-@keyframes ent-streg { 0%, 10% { transform: scaleX(0); } 22%, 82% { transform: scaleX(1); } 90%, 100% { transform: scaleX(0); } }
+.ent-trin2 .ent-ok { animation-name: ent-ok2; }
+.ent-trin3 .ent-ok { animation-name: ent-ok3; }
+/* Én fælles tidslinje uden forsinkelser: flueben 1, streg, flueben 2, streg, flueben 3. Alt slukker samtidig, så næste runde starter forfra */
+@keyframes ent-ok1 { 0%, 4% { transform: scale(0); opacity: 0; } 8% { transform: scale(1.15); opacity: 1; } 11%, 84% { transform: scale(1); opacity: 1; } 90%, 100% { transform: scale(.6); opacity: 0; } }
+@keyframes ent-ok2 { 0%, 24% { transform: scale(0); opacity: 0; } 28% { transform: scale(1.15); opacity: 1; } 31%, 84% { transform: scale(1); opacity: 1; } 90%, 100% { transform: scale(.6); opacity: 0; } }
+@keyframes ent-ok3 { 0%, 44% { transform: scale(0); opacity: 0; } 48% { transform: scale(1.15); opacity: 1; } 51%, 84% { transform: scale(1); opacity: 1; } 90%, 100% { transform: scale(.6); opacity: 0; } }
+@keyframes ent-streg1 { 0%, 12% { transform: scaleX(0); opacity: 1; } 24%, 84% { transform: scaleX(1); opacity: 1; } 90% { transform: scaleX(1); opacity: 0; } 91%, 100% { transform: scaleX(0); opacity: 0; } }
+@keyframes ent-streg2 { 0%, 32% { transform: scaleX(0); opacity: 1; } 44%, 84% { transform: scaleX(1); opacity: 1; } 90% { transform: scaleX(1); opacity: 0; } 91%, 100% { transform: scaleX(0); opacity: 0; } }
 
 /* Fliserne under: det, virksomheden får */
 .ent-fliser { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
