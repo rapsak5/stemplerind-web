@@ -68,16 +68,24 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 /* Et hop fra bjælken lander med overskriften lige under den */
 :root { --top-h: 64px; }
 section[id] { scroll-margin-top: calc(var(--top-h) + env(safe-area-inset-top, 0px) - 44px); }
-/* Telefon og smal skærm: bjælken ligger som en række under logoet og kan rulles sidelæns */
+/* Telefon og smal skærm: tre streger til venstre for navnet åbner navigationen som en menu under bjælken */
+.menu-knap { display: none; }
 @media (max-width: 980px) {
-  :root { --top-h: 106px; }
-  .top .ramme { display: grid; grid-template-columns: minmax(0, 1fr) auto; height: auto; row-gap: 0; }
-  .top .logo-navn, .top .top-hoejre { min-height: 56px; }
-  .top nav { order: 3; grid-column: 1 / -1; width: calc(100% + 40px); margin-inline: -20px; padding: 0 20px 10px; gap: 8px; font-size: 14.5px; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 36px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 36px), transparent 100%); }
-  .top nav::-webkit-scrollbar { display: none; }
-  .top nav a { flex: none; display: inline-flex; align-items: center; height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--kant); background: var(--flade); color: var(--blaek); white-space: nowrap; box-shadow: none; }
-  .top nav a[aria-current] { background: var(--groen); border-color: var(--groen); color: var(--groen-tekst); box-shadow: none; }
+  .top .ramme { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 10px; }
+  .menu-knap { display: inline-grid; place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 12px; border: 1px solid var(--kant); background: var(--flade); color: var(--blaek); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .menu-knap svg { display: block; }
+  .menu-knap .luk-ikon { display: none; }
+  .menu-aaben .menu-knap { border-color: var(--groen); }
+  .menu-aaben .menu-knap .streg-ikon { display: none; }
+  .menu-aaben .menu-knap .luk-ikon { display: block; }
+  .top nav { display: none; position: absolute; left: max(20px, env(safe-area-inset-left, 0px)); top: calc(100% - 5px); z-index: 20; min-width: 230px; max-width: calc(100% - 40px); flex-direction: column; gap: 0; padding: 6px; background: var(--flade); border: 1px solid var(--kant); border-radius: 14px; box-shadow: var(--skygge); font-size: 16px; }
+  .menu-aaben nav { display: flex; }
+  .top nav a { display: flex; align-items: center; min-height: 46px; padding: 0 12px; border-radius: 10px; color: var(--blaek); box-shadow: none; }
+  .top nav a:hover { background: var(--groen-lys); }
+  .top nav a[aria-current] { background: var(--groen-lys); font-weight: 700; box-shadow: none; }
 }
+/* På telefon står de tre streger i stedet for logoet foran navnet */
+@media (max-width: 520px) { .top .logo-navn img { display: none; } }
 
 /* Toppen: budskab, ark med klistermærker og telefonen */
 .helt { padding-block: 64px 80px; }
@@ -292,8 +300,8 @@ main.enkel code { font-family: var(--mono); font-size: 14px; }
 .sprog-liste a[aria-current] { font-weight: 700; }
 .enkel-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
 @media (max-width: 420px) { .top .knap.lille { padding: 0 12px; font-size: 14px; } .sprog summary span { display: none; } }
-@media (max-width: 380px) { .top .ramme { column-gap: 10px; } .logo-navn { font-size: 17px; gap: 8px; } .logo-navn img { width: 26px; height: 26px; } }
-@media (max-width: 340px) { .logo-navn { font-size: 15px; gap: 6px; } .logo-navn img { width: 24px; height: 24px; } .top-hoejre { gap: 6px; } .top .knap.lille { padding: 0 10px; font-size: 13px; } }
+@media (max-width: 380px) { .top .ramme { column-gap: 8px; } .logo-navn { font-size: 17px; } .top .knap.lille { padding: 0 10px; } }
+@media (max-width: 359px) { .top .ramme { column-gap: 6px; } .menu-knap { width: 38px; height: 38px; } .logo-navn { font-size: 14.5px; } .top-hoejre { gap: 6px; } .top .knap.lille { padding: 0 8px; font-size: 13px; } }
 
 /* Eget design: bred kort under pakkerne */
 .eget { margin-top: 22px; background: var(--flade); border: 1px solid var(--kant); border-radius: 22px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); align-items: center; }
