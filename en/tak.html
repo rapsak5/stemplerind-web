@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>Thank you for your order | StemplerInd</title>
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="../ikon.svg"><link rel="stylesheet" href="../stil.css?v=a39b737edc"></head>
+<body><main class="enkel">
+<div class="enkel-top"><a class="logo-navn" href="./"><img src="../ikon.svg" alt="">StemplerInd</a><details class="sprog"><summary aria-label="Language"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 28" width="22" height="17" aria-hidden="true" style="border-radius:3px;display:block;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.12)"><rect width="37" height="28" fill="#012169"/><path d="M0 0L37 28M37 0L0 28" stroke="#fff" stroke-width="5.6"/><path d="M0 0L37 28M37 0L0 28" stroke="#C8102E" stroke-width="1.9"/><path d="M18.5 0V28M0 14H37" stroke="#fff" stroke-width="9.3"/><path d="M18.5 0V28M0 14H37" stroke="#C8102E" stroke-width="5.6"/></svg><span>EN</span></summary><div class="sprog-liste"><a href="../tak.html" hreflang="da" lang="da"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 28" width="22" height="17" aria-hidden="true" style="border-radius:3px;display:block;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.12)"><rect width="37" height="28" fill="#C8102E"/><rect x="12" width="4" height="28" fill="#fff"/><rect y="12" width="37" height="4" fill="#fff"/></svg><span>Dansk</span></a><a href="../en/tak.html" hreflang="en" lang="en" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 28" width="22" height="17" aria-hidden="true" style="border-radius:3px;display:block;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.12)"><rect width="37" height="28" fill="#012169"/><path d="M0 0L37 28M37 0L0 28" stroke="#fff" stroke-width="5.6"/><path d="M0 0L37 28M37 0L0 28" stroke="#C8102E" stroke-width="1.9"/><path d="M18.5 0V28M0 14H37" stroke="#fff" stroke-width="9.3"/><path d="M18.5 0V28M0 14H37" stroke="#C8102E" stroke-width="5.6"/></svg><span>English</span></a><a href="../sv/tak.html" hreflang="sv" lang="sv"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 28" width="22" height="17" aria-hidden="true" style="border-radius:3px;display:block;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.12)"><rect width="37" height="28" fill="#006AA7"/><rect x="11" width="5" height="28" fill="#FECC00"/><rect y="11.5" width="37" height="5" fill="#FECC00"/></svg><span>Svenska</span></a><a href="../no/tak.html" hreflang="nb" lang="nb"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 28" width="22" height="17" aria-hidden="true" style="border-radius:3px;display:block;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.12)"><rect width="37" height="28" fill="#BA0C2F"/><rect x="10" width="7" height="28" fill="#fff"/><rect y="10.5" width="37" height="7" fill="#fff"/><rect x="11.75" width="3.5" height="28" fill="#00205B"/><rect y="12.25" width="37" height="3.5" fill="#00205B"/></svg><span>Norsk</span></a><a href="../de/tak.html" hreflang="de" lang="de"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 28" width="22" height="17" aria-hidden="true" style="border-radius:3px;display:block;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.12)"><rect width="37" height="28" fill="#FFCE00"/><rect width="37" height="18.67" fill="#DD0000"/><rect width="37" height="9.33" fill="#000"/></svg><span>Deutsch</span></a></div></details></div>
+<h1>Thank you for your order</h1>
+<p class="daempet" id="o-henter" role="status">Fetching your order</p>
+<div id="o-ordre" hidden>
+  <p class="ordre-test" id="o-test" hidden>Test order. No money has been charged.</p>
+  <p id="o-betalt">We have received your payment. The receipt is on its way by email to <b id="o-mail"></b>.</p>
+  <dl class="ordre-fakta"><dt>Order number</dt><dd class="mono" id="o-nr"></dd><dt>Date</dt><dd id="o-dato"></dd></dl>
+  <table class="ordre-linjer"><tbody id="o-linjer"></tbody>
+    <tfoot><tr><th scope="row">Shipping</th><td id="o-fragt"></td></tr><tr class="ialt"><th scope="row">Total</th><td id="o-total"></td></tr><tr class="moms"><th scope="row">Including VAT</th><td id="o-moms"></td></tr></tfoot></table>
+  <div id="o-lev" hidden><h2>Ships to</h2><p id="o-adresse"></p></div>
+  <h2>What happens now?</h2>
+  <p>We write and lock your tags and usually send them within 3 working days as a letter with PostNord, GLS or dao.</p>
+  <p>In the meantime you can open the app and set your working hours.</p>
+  <p><a class="knap" href="../app/">Open the app</a></p>
+</div>
+<p class="kurv-fejl" id="o-fejl" role="alert" hidden></p>
+<p class="daempet">Questions about your order? Write to contact@stemplerind.dk and include the order number.</p>
+<p class="daempet"><a href="./">Back to the front page</a> · <a href="betingelser.html">Terms of sale</a> · <a href="fortryd.html">Withdraw from a purchase</a></p>
+</main>
+<script>
+(function () {
+  var API = 'https://stemplerind-butik.stemplerind.workers.dev', T = {"titel":"Thank you for your order","henter":"Fetching your order","betalt":"We have received your payment. The receipt is on its way by email to","ordrenr":"Order number","dato":"Date","fragt":"Shipping","ialt":"Total","moms":"Including VAT","leveres":"Ships to","naeste":"What happens now?","naesteP":"We write and lock your tags and usually send them within 3 working days as a letter with PostNord, GLS or dao.","app":"In the meantime you can open the app and set your working hours.","appKnap":"Open the app","spm":"Questions about your order? Write to contact@stemplerind.dk and include the order number.","ikkeBetalt":"The payment has not gone through yet. Refresh the page in a moment, or write to contact@stemplerind.dk.","fejl":"We could not fetch the order right now. If the payment went through, you will get a receipt by email. Write to contact@stemplerind.dk if you are unsure.","test":"Test order. No money has been charged.","forside":"Back to the front page"}, sprog = document.documentElement.lang;
+  function $(id) { return document.getElementById(id); }
+  function vis(fejl) { $('o-henter').hidden = true; if (fejl) { $('o-fejl').textContent = fejl; $('o-fejl').hidden = false; } }
+  var id = (location.search.match(/[?&]id=(cs_[A-Za-z0-9_]+)/) || [])[1];
+  if (!id || !API) return vis(T.fejl);
+  fetch(API + '/ordre?id=' + encodeURIComponent(id))
+    .then(function (r) { return r.json().then(function (d) { if (!r.ok) throw new Error(d.fejl || r.status); return d; }); })
+    .then(function (o) {
+      if (!o.betalt) return vis(T.ikkeBetalt);
+      // Betalt: kurven tømmes, så den ikke står fyldt næste gang
+      try { localStorage.removeItem('stemplerind-kurv'); } catch (e) { }
+      var penge = new Intl.NumberFormat(sprog, { style: 'currency', currency: o.valuta });
+      var kr = function (oere) { return penge.format(oere / 100); };
+      $('o-test').hidden = !o.test;
+      $('o-mail').textContent = o.mail || '';
+      if (!o.mail) $('o-betalt').hidden = true;
+      $('o-nr').textContent = o.ordre || id.slice(-8).toUpperCase();
+      $('o-dato').textContent = o.dato ? new Date(o.dato).toLocaleDateString(sprog, { dateStyle: 'long' }) : '';
+      var tb = $('o-linjer');
+      o.varer.forEach(function (v) {
+        var tr = document.createElement('tr'), th = document.createElement('th'), td = document.createElement('td');
+        th.scope = 'row'; th.textContent = v.antal + ' × ' + v.navn; td.textContent = kr(v.beloeb);
+        tr.appendChild(th); tr.appendChild(td); tb.appendChild(tr);
+      });
+      $('o-fragt').textContent = kr(o.fragt); $('o-total').textContent = kr(o.total); $('o-moms').textContent = kr(o.moms);
+      if (o.levering) {
+        var l = o.levering, land = l.land;
+        try { land = new Intl.DisplayNames([sprog], { type: 'region' }).of(l.land); } catch (e) { }
+        var adr = $('o-adresse');
+        [l.navn].concat(l.linjer, [(l.postnr + ' ' + l.by).trim(), land]).filter(Boolean).forEach(function (x, i) {
+          if (i) adr.appendChild(document.createElement('br')); adr.appendChild(document.createTextNode(x));
+        });
+        $('o-lev').hidden = false;
+      }
+      $('o-henter').hidden = true; $('o-ordre').hidden = false;
+    })
+    .catch(function () { vis(T.fejl); });
+})();
+</script>
+</body></html>

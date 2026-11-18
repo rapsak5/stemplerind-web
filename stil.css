@@ -558,3 +558,16 @@ button.knap { font-family: var(--sans); }
 .fortryd-resume dd { margin: 2px 0 12px; overflow-wrap: anywhere; white-space: pre-line; }
 .formular-skabelon { background: var(--flade); border: 1px solid var(--kant); border-radius: 16px; padding: 18px 20px; line-height: 2; }
 .kurv-vilkaar { font-size: 14px; text-align: center; margin: 6px 0 0; }
+/* Takkesiden efter betaling */
+#o-ordre { display: flex; flex-direction: column; gap: 18px; }
+#o-ordre p, #o-ordre h2 { margin: 0; }
+.ordre-test { padding: 10px 14px; border-radius: 12px; background: #F6EBD3; color: #6B4A0C; font-weight: 600; }
+.ordre-fakta { display: grid; grid-template-columns: auto 1fr; gap: 4px 20px; margin: 0; }
+.ordre-fakta dt { color: var(--daempet); }
+.ordre-fakta dd { margin: 0; font-weight: 600; }
+.ordre-linjer { width: 100%; border-collapse: collapse; background: var(--flade); border: 1px solid var(--kant); border-radius: 16px; overflow: hidden; }
+.ordre-linjer th, .ordre-linjer td { padding: 10px 16px; text-align: left; font-weight: 400; border-top: 1px solid var(--kant); }
+.ordre-linjer tbody tr:first-child th, .ordre-linjer tbody tr:first-child td { border-top: 0; }
+.ordre-linjer td { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ordre-linjer .ialt th, .ordre-linjer .ialt td { font-weight: 700; }
+.ordre-linjer .moms th, .ordre-linjer .moms td { border-top: 0; padding-top: 0; color: var(--daempet); font-size: 14px; }
