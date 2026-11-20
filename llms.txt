@@ -4,7 +4,7 @@
 
 ## Facts
 
-- App: free. Android app (Google Play: not published yet), web app at https://stemplerind.dk/app/ that can be installed on the home screen. iPhone app: not available yet.
+- App: free. Android app (Google Play: available), web app at https://stemplerind.dk/app/ that can be installed on the home screen. iPhone app: not available yet.
 - Languages: Danish, English, Swedish, Norwegian and German.
 - Public holidays for Denmark, Sweden, Norway and Germany.
 - Absence: sick days, holidays, child's sick day, time off in lieu, parental leave and custom types.
