@@ -259,6 +259,13 @@ li:nth-child(3) .trin-ping { animation-delay: 1.2s; } li:nth-child(3) .trin-ping
 .butiksmaerke { display: inline-flex; flex-direction: column; padding: 10px 18px; border-radius: 12px; background: var(--blaek); color: var(--papir); text-decoration: none; line-height: 1.2; }
 .butiksmaerke small { font-size: 12px; opacity: .75; }
 .butiksmaerke b { font-size: 17px; }
+.butiksmaerke.play { flex-direction: row; align-items: center; gap: 12px; padding: 9px 20px 9px 16px; background: #000; color: #fff; border: 1px solid #A6A6A6; }
+.butiksmaerke.play span { display: flex; flex-direction: column; }
+.butiksmaerke.play small { text-transform: uppercase; letter-spacing: .04em; font-size: 11px; opacity: .9; }
+.butiksmaerke.play b { font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
+.butiksmaerke.play:hover { background: #1a1a1a; }
+.helt-app { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.helt-app .tekstlink { color: var(--blaek); font-weight: 600; }
 .butiksmaerke.snart { background: transparent; color: var(--daempet); border: 1px dashed var(--kant); }
 @media (max-width: 480px) { .funktioner { grid-template-columns: 1fr; } }
 
