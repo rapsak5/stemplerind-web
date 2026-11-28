@@ -12,7 +12,7 @@
 - Warnings about forgotten clock-outs, long days, weekend work and many ins and outs.
 - Approve a period and export to Excel, Word or PDF.
 - Privacy: everything is stored on the phone. The employer cannot see the data unless the user exports and shares it.
-- NFC tags: round, 30 mm, NTAG213, written and locked. They contain only a web address such as https://stemplerind.dk/t/skift and the app id dk.stemplerind.app. No personal data. The same tag works for every user.
+- NFC tags: round, 40 mm, NTAG213, written and locked. They contain only a web address such as https://stemplerind.dk/t/skift and the app id dk.stemplerind.app. No personal data. The same tag works for every user.
 
 ## NFC tag packs
 
