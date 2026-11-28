@@ -49,7 +49,8 @@
   if (ios) {
     var h = document.getElementById('hent');
     var appStore = '';
-    if (appStore) { h.href = appStore; s('hent', t.hentIos); }
+    // Uden app og uden webapp: direkte til App Store. Siden bliver stående bagved, hvis Safari stopper hoppet
+    if (appStore) { h.href = appStore; s('hent', t.hentIos); location.replace(appStore); return; }
     else { h.hidden = true; w.className = 'knap'; s('tekst', t.tekstIos); s('hjaelp', t.hjaelpIos); }
   }
   // Har man appen, men åbnede adressen i browseren, kan man hoppe direkte ind i appen
