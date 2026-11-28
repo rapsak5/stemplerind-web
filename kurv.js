@@ -4,7 +4,9 @@
 (function () {
   var K = window.KURV; if (!K || !K.api) return;
   var t = K.t, NOEGLE = 'stemplerind-kurv', SHOP_NOEGLE = 'stemplerind-pakkeshop', MAKS = 50;
-  var FIRMAER = [['gls', 'GLS'], ['postnord', 'PostNord']];
+  // DAO (brev) er første valg og kommer i postkassen. GLS og PostNord går til en pakkeshop, kunden vælger.
+  var FIRMAER = [['dao', t.kurvBrevNavn || 'DAO'], ['gls', 'GLS'], ['postnord', 'PostNord']];
+  function erBrev() { return valg.firma === 'dao'; }
 
   function hent() { try { var v = JSON.parse(localStorage.getItem(NOEGLE) || '{}'); return v && typeof v === 'object' ? v : {}; } catch (e) { return {}; } }
   var kurv = rens(hent());
@@ -24,7 +26,7 @@
   panel.innerHTML = '<div class="kurv-hoved"><h2></h2><button type="button" class="kurv-luk"></button></div><ul class="kurv-linjer"></ul><p class="kurv-tom daempet"></p>'
     + '<section class="kurv-shop"><h3></h3><div class="kurv-firma" role="radiogroup"></div>'
     + '<form class="kurv-soeg" novalidate><input type="text" inputmode="numeric" autocomplete="postal-code" maxlength="4" pattern="[0-9]{4}"><button type="submit" class="knap sek lille"></button></form>'
-    + '<p class="kurv-shopinfo daempet" role="status" hidden></p><ul class="kurv-shops" hidden></ul><div class="kurv-valgt" hidden><p></p><button type="button" class="tekstknap"></button></div></section>'
+    + '<p class="kurv-brevinfo daempet" hidden></p><p class="kurv-shopinfo daempet" role="status" hidden></p><ul class="kurv-shops" hidden></ul><div class="kurv-valgt" hidden><p></p><button type="button" class="tekstknap"></button></div></section>'
     + '<dl class="kurv-sum"></dl><p class="kurv-fejl" role="alert" hidden></p><button type="button" class="knap kurv-betal"></button><p class="kurv-stripe daempet"></p><p class="kurv-vilkaar"><a href="betingelser.html"></a></p>';
   panel.querySelector('h2').textContent = t.kurvTitel;
   var luk = panel.querySelector('.kurv-luk'); luk.textContent = '×'; luk.setAttribute('aria-label', t.kurvLuk);
@@ -37,24 +39,28 @@
   // Pakkeshop: kunden vælger fragtfirma, skriver sit postnummer og vælger en shop fra listen.
   // Valget gemmes i browseren og sendes med til kassen, som slår shoppen op igen hos fragtfirmaet.
   var valg = (function () { try { var v = JSON.parse(localStorage.getItem(SHOP_NOEGLE) || '{}'); return v && typeof v === 'object' ? v : {}; } catch (e) { return {}; } })();
-  if (!valg.firma || !FIRMAER.some(function (f) { return f[0] === valg.firma; })) valg.firma = 'gls';
+  // Nye kunder og kunder uden valgt pakkeshop starter på DAO (brev)
+  if (!valg.firma || !FIRMAER.some(function (f) { return f[0] === valg.firma; }) || !(valg.shop && valg.shop.id)) valg.firma = 'dao';
   function gemValg() { try { localStorage.setItem(SHOP_NOEGLE, JSON.stringify(valg)); } catch (e) { } }
   var shopDel = panel.querySelector('.kurv-shop'), firmaDel = panel.querySelector('.kurv-firma'), soeg = panel.querySelector('.kurv-soeg');
   var postnr = soeg.querySelector('input'), findKnap = soeg.querySelector('button'), info = panel.querySelector('.kurv-shopinfo');
-  var shopListe = panel.querySelector('.kurv-shops'), valgtDel = panel.querySelector('.kurv-valgt');
+  var shopListe = panel.querySelector('.kurv-shops'), valgtDel = panel.querySelector('.kurv-valgt'), brevInfo = panel.querySelector('.kurv-brevinfo');
+  brevInfo.textContent = t.kurvBrevInfo || '';
   shopDel.querySelector('h3').textContent = t.kurvLevering;
   postnr.setAttribute('aria-label', t.kurvPostnr); postnr.placeholder = t.kurvPostnr; postnr.value = valg.soeg || '';
   findKnap.textContent = t.kurvFind;
   valgtDel.querySelector('button').textContent = t.kurvSkift;
   FIRMAER.forEach(function (f) {
     var lab = el('label', 'kurv-firmavalg'), r = el('input'); r.type = 'radio'; r.name = 'kurv-firma'; r.value = f[0]; r.checked = valg.firma === f[0];
-    r.onchange = function () { valg.firma = f[0]; valg.shop = null; gemValg(); shopListe.hidden = true; info.hidden = true; visValgt(); if (/^\d{4}$/.test(postnr.value)) find(); };
+    r.onchange = function () { valg.firma = f[0]; valg.shop = null; gemValg(); shopListe.hidden = true; info.hidden = true; fejl.hidden = true; visValgt(); if (!erBrev() && /^\d{4}$/.test(postnr.value)) find(); };
     lab.appendChild(r); lab.appendChild(el('span', null, f[1])); firmaDel.appendChild(lab);
   });
   function shopTekst(p) { return p.navn + ', ' + p.adresse + ', ' + p.postnr + ' ' + p.by; }
   function visValgt() {
-    var har = !!(valg.shop && valg.shop.id);
-    valgtDel.hidden = !har; soeg.hidden = har; firmaDel.hidden = har;
+    var brev = erBrev(), har = !brev && !!(valg.shop && valg.shop.id);
+    brevInfo.hidden = !brev;
+    valgtDel.hidden = !har; soeg.hidden = har || brev; firmaDel.hidden = har;
+    if (brev) { shopListe.hidden = true; info.hidden = true; }
     if (har) valgtDel.querySelector('p').textContent = (valg.firma === 'postnord' ? 'PostNord' : 'GLS') + ': ' + shopTekst(valg.shop);
   }
   function besked(tekst) { info.textContent = tekst; info.hidden = !tekst; }
@@ -126,9 +132,10 @@
   betal.onclick = function () {
     var varer = Object.keys(kurv).map(function (id) { return { id: id, antal: kurv[id] }; });
     if (!varer.length) return;
-    if (!valg.shop || !valg.shop.id) { fejl.textContent = t.kurvVaelg; fejl.hidden = false; visValgt(); postnr.focus(); return; }
+    if (!erBrev() && (!valg.shop || !valg.shop.id)) { fejl.textContent = t.kurvVaelg; fejl.hidden = false; visValgt(); postnr.focus(); return; }
+    var fragtValg = erBrev() ? { fragtfirma: 'dao' } : { pakkeshop: { firma: valg.firma, postnr: valg.soeg, id: valg.shop.id } };
     betal.disabled = true; betal.textContent = t.kurvVent; fejl.hidden = true;
-    fetch(K.api + '/kasse', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ varer: varer, sprog: K.sprog, sti: location.pathname, pakkeshop: { firma: valg.firma, postnr: valg.soeg, id: valg.shop.id } }) })
+    fetch(K.api + '/kasse', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.assign({ varer: varer, sprog: K.sprog, sti: location.pathname }, fragtValg)) })
       .then(function (r) { return r.json().then(function (d) { if (!r.ok || !d.url) throw new Error(d.fejl || r.status); return d; }); })
       .then(function (d) { location.href = d.url; })
       .catch(function (e) {
